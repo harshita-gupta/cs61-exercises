@@ -43,7 +43,9 @@
 ///    Try `man system` and `man popen`.
 
 size_t spec_size(const char* spec) {
-    (void) spec;
+    for (int i = 0; i < sizeof(spec); i ++) {
+    	printf(spec[i]);
+    }
     // YOUR CODE HERE
     return 0;
 }

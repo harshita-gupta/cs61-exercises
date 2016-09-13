@@ -59,7 +59,7 @@ struct membench_arena {
 };
 
 
-membench_arena* membench_arena_new(void) {
+membench_arena* membench_arena_create(void) {
     // An arena initially contains a single chunk, which is free.
     // TODO: Change this! //done?
     membench_arena* arena = (membench_arena*) malloc(sizeof(membench_arena));
@@ -81,6 +81,6 @@ void membench_free(membench_arena* arena, chunk* x) {
 
 }
 
-void membench_arena_free(membench_arena* arena) {
+void membench_arena_destroy(membench_arena* arena) {
     free(arena);
 }

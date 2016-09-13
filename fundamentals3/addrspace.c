@@ -149,5 +149,7 @@ int main(int argc, char* argv[]) {
 
     printf("Address of a heap variable\t\t%p\n", heap_ch);
     printf("Address of main\t\t\t\t%p\n", main);
+
+    free(heap_ch);
     return 0;
 }

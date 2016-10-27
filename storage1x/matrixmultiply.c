@@ -27,9 +27,11 @@ void fast_matrix_multiply(double* c, size_t sz, double* a, double* b) {
             *me(c, sz, i, j) = 0;
 
     // compute product and update `c`
-    for (size_t i = 0; i < sz; ++i)
+        for (size_t k = 0; k < sz; ++k)
+        for (size_t i = 0; i < sz; ++i)
         for (size_t j = 0; j < sz; ++j)
-            for (size_t k = 0; k < sz; ++k)
+            
+    
                 *me(c, sz, i, j) += *me(a, sz, i, k) * *me(b, sz, k, j);
 }
 

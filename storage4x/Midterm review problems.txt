@@ -1,0 +1,33 @@
+Midterm review problems: 
+
+
+----
+Q1
+Your friend shows you a binary bomb and explains that the number to be entered has to match the integer stored at the address 0x601048.
+
+What command would you type to see what number to enter?
+Your friend shows you the following display:
+0x601048 <arr+8>:	0xe0	0xd1 	0xee	0x0b	0x43	0x65	0x87	0x09
+What number would you suggest entering? (You may express it in hexidecimal.)
+
+Q2
+Another friend is working on the debugging malloc and shows you the following code (assume sz is properly defined and refers to the size the caller to the debugging malloc wishes to allocate):
+
+void *m, *payload;
+
+m = malloc(sizeof(struct meta) + sz); payload = m + sizeof(struct meta);
+
+Your friend says that this runs just fine on the appliance but crashes on a different machine. Explain why?
+
+Q3
+In class you worked on a garbage collector implementation. Even if you did the exercise entirely correctly, there are cases where you might not successfully reclaim all unused space. Explain how this could happen.
+
+----
+
+Q1:
+x/wx 0x601048
+0x0beed1e0 // because hex little endian and four bytes 
+
+Q2: void pointer addition is undefined behavior 
+
+Q3: //TODO: after doing garbage collectors check this lol

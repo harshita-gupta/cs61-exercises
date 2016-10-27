@@ -1,0 +1,80 @@
+We're going to give you some practice simulating cache eviction policies. For the problems below, assume that the following is an ordered string of references to blocks in a cache.
+
+   A B C A D C A F C F
+Let's say that we have a cache with three slots.
+
+1. What is the hit rate using the FIFO replacement policy? (Express hit rate as a fraction H/T.)
+H | III 		M| IIIIIII
+CAF
+3/10
+
+2. What three blocks are in the cache at the end of the simulation?
+CAF
+
+3. What is the hit rate using the LRU replacement policy?
+H| IIIII				M| IIIII 
+
+A F C 
+
+5/1O
+
+4. What three blocks are in the cache at the end of the simulation?
+AFC
+
+5. What is the hit rate using the LFU replacement policy? (If two blocks have the same frequency and you need to evict one, evict the one that entered the cache last.)
+2/10
+h | II 			m| IIIIIIII
+
+
+6. What three blocks are in the cache at the end of the simulation?
+ABF
+
+
+7. If we increase the number of slots in our cache from three to four, do you think the hit rates will go up or down?
+   A B C A D C A F C F
+up
+
+OK, let's try it! Let's say that we now have four slots.
+
+8. What is the hit rate using FIFO?
+5/10
+9. What is the hit rate using LRU?
+5/10
+H|iiiii  				M| iiiii
+10. What is the hit rate using LFU?
+H| 	iiiii			M| iiiii
+5/10
+11. In general, if you increase the number of slots, do you expect the hit rate to increase or decrease?
+increase
+12. Do you think your answer to #11 is always the same?
+no
+Consider the following access string:
+
+    1 2 3 4 1 2 5 1 2 3 4 5
+Assume a 3-slot cache
+
+13. What is the hit rate for FIFO?
+///////++//+
+3/12
+
+14. What is the hit rate for LRU?
+///////==///
+2/12
+Now assume a 4-slot cache
+
+15. What is the hit rate for FIFO?
+
+16. What is the hit rate for LRU?
+
+We are assuming you find these hit rates surprising! This is called Belady's anomaly and is worth a quick read.
+
+In computer storage, Bélády's anomaly is the phenomenon in which increasing the number of page frames results in an increase in the number of page faults for certain memory access patterns. This phenomenon is commonly experienced when using the First in First Out (FIFO) page replacement algorithm. László Bélády demonstrated this in 1969.[1]
+
+In common computer memory management, information is loaded in specific sized chunks. Each chunk is referred to as a page. Main memory can only hold a limited number of pages at a time. It requires a frame for each page it can load. A page fault occurs when a page is not found, and might need to be loaded from disk into memory.
+
+When a page fault occurs and all frames are in use, one must be cleared to make room for the new page. A simple algorithm is FIFO: whichever page has been in the frames the longest is the one that is cleared. Until Bélády's anomaly was demonstrated, it was believed that an increase in the number of page frames would always result in the same number or fewer page faults.
+
+
+The Ideal Replacement Policy
+It turns out that our friend Belady was a very clever fellow. He figured out that if you were omniscient and knew the entire reference string in advance, there was a provably optimal algorithm you could use to select pages to evict from a cache. Spend some time and see if you can figure out what that algorithm is. If you cannot, read about it here.
+

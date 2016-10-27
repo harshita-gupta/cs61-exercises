@@ -531,6 +531,7 @@ static const treasure_function treasure_functions[] = {
 };
 
 int main(int argc, char* argv[]) {
+    printf("%zi\n", sizeof(char *));
     long treasure_number = long_argument_named(1, argc, argv, "TREASURENUMBER");
     int result = treasure_functions[treasure_number](argc - 2, &argv[2]);
     if (result != 0)

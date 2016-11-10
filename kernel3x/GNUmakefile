@@ -98,11 +98,19 @@ run-gdb-%: run-gdb-$(QEMUDISPLAY)-%
 	@:
 
 run-gdb-graphic-%: %.img check-qemu
+<<<<<<< HEAD
 	$(call run,$(QEMU_PRELOAD) $(QEMU) $(QEMUOPT) -gdb tcp::1234 $(QEMUIMG) &,QEMU $<)
 	$(call run,sleep 0.5; gdb -x .gdbinit,GDB)
 
 run-gdb-console-%: %.img check-qemu
 	$(call run,$(QEMU_PRELOAD) $(QEMU) $(QEMUOPT) -curses -gdb tcp::1234 $(QEMUIMG),QEMU $<)
+=======
+	$(call run,$(QEMU_PRELOAD) $(QEMU) $(QEMUOPT) -S -gdb tcp::1234 $(QEMUIMG) &,QEMU $<)
+	$(call run,gdb -x .gdbinit,GDB)
+
+run-gdb-console-%: %.img check-qemu
+	$(call run,$(QEMU_PRELOAD) $(QEMU) $(QEMUOPT) -curses -S -gdb tcp::1234 $(QEMUIMG),QEMU $<)
+>>>>>>> origin/master
 
 run: run-qemu-$(basename $(IMAGE))
 run-qemu: run-qemu-$(basename $(IMAGE))

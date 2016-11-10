@@ -339,14 +339,23 @@ static inline void tlbflush(void) {
 }
 
 static inline uint32_t read_eflags(void) {
+<<<<<<< HEAD
     uint64_t eflags;
     asm volatile("pushfq; popq %0" : "=r" (eflags));
+=======
+    uint32_t eflags;
+    asm volatile("pushfl; popl %0" : "=r" (eflags));
+>>>>>>> origin/master
     return eflags;
 }
 
 static inline void write_eflags(uint32_t eflags) {
+<<<<<<< HEAD
     uint64_t rflags = eflags; // really only lower 32 bits are used
     asm volatile("pushq %0; popfq" : : "r" (rflags));
+=======
+    asm volatile("pushl %0; popfl" : : "r" (eflags));
+>>>>>>> origin/master
 }
 
 static inline uintptr_t read_rbp(void) {

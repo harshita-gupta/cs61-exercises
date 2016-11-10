@@ -16,9 +16,12 @@ void app_printf(int colorid, const char* format, ...) {
     va_start(val, format);
     cursorpos = console_vprintf(cursorpos, color, format, val);
     va_end(val);
+<<<<<<< HEAD
 
     if (CROW(cursorpos) >= 23)
         cursorpos = CPOS(0, 0);
+=======
+>>>>>>> origin/master
 }
 
 

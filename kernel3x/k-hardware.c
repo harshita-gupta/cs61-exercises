@@ -684,6 +684,7 @@ int error_printf(int cpos, int color, const char* format, ...) {
 
 
 // check_keyboard
+<<<<<<< HEAD
 //    Check for the user typing a control key. Control-C or 'q' exit
 //    the virtual machine. Returns key typed or -1 for no key.
 
@@ -692,6 +693,15 @@ int check_keyboard(void) {
     if (c == 0x03 || c == 'q')
         poweroff();
     return c;
+=======
+//    Check for the user typing a control key. Control-C or 'q' exit the
+//    virtual machine.
+
+void check_keyboard(void) {
+    int c = keyboard_readc();
+    if (c == 0x03 || c == 'q')
+        poweroff();
+>>>>>>> origin/master
 }
 
 
@@ -715,12 +725,20 @@ void panic(const char* format, ...) {
 
     if (format) {
         // Print panic message to both the screen and the log
+<<<<<<< HEAD
         int cpos = error_printf(CPOS(24, 0), 0xC000, "PANIC: ");
+=======
+        int cpos = error_printf(CPOS(23, 0), 0xC000, "PANIC: ");
+>>>>>>> origin/master
         cpos = error_vprintf(cpos, 0xC000, format, val);
         if (CCOL(cpos))
             error_printf(cpos, 0xC000, "\n");
     } else
+<<<<<<< HEAD
         error_printf(CPOS(24, 0), 0xC000, "PANIC");
+=======
+        error_printf(CPOS(23, 0), 0xC000, "PANIC");
+>>>>>>> origin/master
 
     va_end(val);
     fail();

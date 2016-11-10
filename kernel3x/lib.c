@@ -185,8 +185,12 @@ void printer_vprintf(printer* p, int color, const char* format, va_list val) {
             length = 1;
             ++format;
             goto again;
+<<<<<<< HEAD
         case 'd':
         case 'i': {
+=======
+        case 'd': {
+>>>>>>> origin/master
             long x = length ? va_arg(val, long) : va_arg(val, int);
             int negative = x < 0 ? FLAG_NEGATIVE : 0;
             num = negative ? -x : x;
@@ -220,6 +224,10 @@ void printer_vprintf(printer* p, int color, const char* format, va_list val) {
             numbuf[0] = va_arg(val, int);
             numbuf[1] = '\0';
             break;
+<<<<<<< HEAD
+=======
+        normal:
+>>>>>>> origin/master
         default:
             data = numbuf;
             numbuf[0] = (*format ? *format : '%');
@@ -255,7 +263,11 @@ void printer_vprintf(printer* p, int color, const char* format, va_list val) {
             zeros = precision > len ? precision - len : 0;
         else if ((flags & FLAG_NUMERIC) && (flags & FLAG_ZERO)
                  && !(flags & FLAG_LEFTJUSTIFY)
+<<<<<<< HEAD
                  && len + (int) strlen(prefix) < width)
+=======
+                 && len + strlen(prefix) < width)
+>>>>>>> origin/master
             zeros = width - len - strlen(prefix);
         else
             zeros = 0;

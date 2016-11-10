@@ -1,5 +1,12 @@
 *~
 core*
 log.txt
+<<<<<<< HEAD
 *.img
 obj
+=======
+os[0-9]*.img
+obj
+weensyos1
+weensyos1.tar.gz
+>>>>>>> origin/master
